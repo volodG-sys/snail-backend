@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from bets.views import start_race
+from bets.views import start_race, get_snails # Додай імпорт сюди
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/race/', start_race),
+    path('api/snails/', get_snails), # Новий шлях
 ]
 

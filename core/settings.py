@@ -15,6 +15,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Після цього команда python manage.py collectstatic --noinput спрацює (вона створить папку для адмінки)
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
