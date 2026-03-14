@@ -143,3 +143,25 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+# ===================== S3 MEDIA STORAGE =====================
+AWS_STORAGE_BUCKET_NAME = 'fastsnail-media-2026'
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+AWS_QUERYSTRING_AUTH = True          # генерує тимчасові посилання
+AWS_DEFAULT_ACL = None               # важливо для приватного bucket
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": AWS_STORAGE_BUCKET_NAME,
+            "region_name": AWS_S3_REGION_NAME,
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/media/"
