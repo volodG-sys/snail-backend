@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Snail
 
-# Register your models here.
+@admin.register(Snail)
+class SnailAdmin(admin.ModelAdmin):
+    list_display = ('name', 'photo')
